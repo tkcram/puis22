@@ -49,13 +49,13 @@ function buildMaze(){
 			`
 		}
 		let monster = ''
-		// if (danger){
-		// 	monster = `
-	 //  	  <div class = "monster"> 
-		//       <img src="https://i.pinimg.com/originals/c9/20/b4/c920b4408d20a6150b902ac435ebd2cc.png"/>
-		//     </div>
-		// 	`
-		// }
+		if (danger){
+			monster = `
+	  	  <div class = "monster"> 
+		      <img src="https://i.pinimg.com/originals/c9/20/b4/c920b4408d20a6150b902ac435ebd2cc.png"/>
+		    </div>
+			`
+		}
 		let item = ''
 		if (loot){
 			item = `
@@ -83,8 +83,8 @@ function buildMaze(){
 	        	${hero}
 		        ${doorsDom.join('')}
 		        ${noDoorsDom.join('')}
-		        ${monster}
 		        ${item}
+		        ${monster}
 	        <div class = "wall wall-top-left"></div>
 	        <div class = "wall wall-top-right"></div>
 	        <div class = "wall wall-bottom-left"></div>
