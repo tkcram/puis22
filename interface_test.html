@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta name="description" content="A cool thing made with Glitch" />
+  <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon"/>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="stylesheets/interface_stylesheet.css" />
+  <script src="scripts/control_script.js" defer></script>
+  <script src="scripts/page_interactions.js" defer></script>
+  <script src="scripts/maze_div_exporter.js" defer></script>
+  <script src="scripts/maze_div_builder.js" defer></script>
+  <script src="scripts/maze_interaction_builder.js" defer></script>
+  <script src="scripts/maze_interaction_functions.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>PUI/PFCH S'22</h1>
+  </header>
+  <main>
+    <!-- Left side-->
+    <div class="main-left">
+      <div id="map">
+        <div id="start-div">
+          <button type="button" id="start-button">Click here to start.</button>
+          <div id="loading"></div>
+        </div>
+      </div>
+      <div id = "action-div"> 
+        <ol id="action-log">
+        </ol>
+      </div>
+    </div>
+    <!-- Right side-->
+    <div class="main-right">
+      <div id="stat-nav">
+        <button id="stat-character-button" class="stat-button" onclick='tabSwitch("stat-character")'>Character</button>
+        <button id="stat-maze-button" class="stat-button" onclick='tabSwitch("stat-maze")'>Maze</button>
+        <button id="stat-game-button" class="stat-button" onclick='tabSwitch("stat-game")'>Stats</button>
+      </div>
+      <div id="stat-character" class="stat-section active"> 
+        <div id="character-attributes">
+          <div id="character-portrait">
+            <img id="character-portrait-image"src="https://cdna.artstation.com/p/assets/images/images/018/886/754/medium/rachel-denton-merchantface.jpg?1561108083">
+          </div>
+
+          <dl id="character-attributes-details" >
+            <dt>Race</dt>
+            <dd></dd>
+            <dt>Subrace</dt>
+            <dd></dd>
+            <dt>Class</dt>
+            <dd></dd>
+            <dt>Subclass</dt>
+            <dd></dd>
+            <dt>Level</dt>
+            <dd></dd>
+          </dl>
+        </div>
+        <div id="character-info">
+          <img src="https://thumbs.dreamstime.com/b/sword-icon-vector-sign-symbol-isolated-white-background-sword-logo-concept-sword-icon-vector-isolated-white-background-134155093.jpg"> 
+          <img src="https://www.creativefabrica.com/wp-content/uploads/2020/08/12/Shield-Icon-Graphics-4941849-1-1-580x387.jpg"> 
+          <img src="https://www.kindpng.com/picc/m/169-1694281_heart-symbol-computer-icons-heart-icon-instagram-png.png"> 
+          <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1810/sudowoodo181000022/110278312-.jpg"> 
+        </div>
+        <table id="character-stats">
+          <tr>
+            <th></th>
+            <th>Base</th>
+            <th>Bonus</th>
+            <th>Proficiencies</th>
+          </tr>
+          <tr>
+            <th>STR</th>
+          </tr>
+          <tr>
+            <th>DEX</th>
+          </tr>
+          <tr>
+            <th>CON</th>
+          </tr>
+          <tr>
+            <th>INT</th>
+          </tr>
+          <tr>
+            <th>WIS</th>
+          </tr>
+          <tr>
+            <th>CHA</th>
+          </tr>
+        </table>
+        <h3> Weapons</h3>
+        <div id='character-inventory-weapon'>
+        </div>
+        <h3> Armor</h3>
+        <div id='character-inventory-armor'>
+        </div>
+        <h3> Consumbales</h3>
+        <div id='character-inventory-armor'>
+        </div>
+      </div>
+      <div id="stat-maze" class="stat-section"> 
+        <h3> Monster </h3>
+        <div id="monster-attributes">
+          <div id="monster-portrait">
+            <img id="character-portrait-image"src="https://cdna.artstation.com/p/assets/images/images/018/886/754/medium/rachel-denton-merchantface.jpg?1561108083">
+          </div>
+          <dl id="monster-attributes-details">
+            <dt>Name</dt>
+            <dd></dd>
+            <dt>Type</dt>
+            <dd></dd>
+            <dt>Level</dt>
+            <dd></dd>
+          </dl>
+        </div>
+<!--         <div id="monster-info">
+          <img src="https://thumbs.dreamstime.com/b/sword-icon-vector-sign-symbol-isolated-white-background-sword-logo-concept-sword-icon-vector-isolated-white-background-134155093.jpg"> 
+          <img src="https://www.creativefabrica.com/wp-content/uploads/2020/08/12/Shield-Icon-Graphics-4941849-1-1-580x387.jpg"> 
+          <img src="https://www.kindpng.com/picc/m/169-1694281_heart-symbol-computer-icons-heart-icon-instagram-png.png"> 
+          <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1810/sudowoodo181000022/110278312-.jpg"> 
+        </div> -->
+        <div>
+          <dl id="monster-stats">
+            <dt>Damage-Vulnerability</dt>
+            <dd></dd>
+            <dt>Damage-Resistance</dt>
+            <dd></dd>
+            <dt>Damage-Immunity</dt>
+            <dd></dd>
+            <dt>Condition-Immunity</dt>
+            <dd></dd>
+          </dl>
+        </div>
+        <h3> Map</h3>
+        <div id='maze-minimap'>
+
+        </div>
+      </div>
+      <div id="stat-game" class="stat-section"> 
+        <div>This is where overall stats will go</div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    Copyright: Sir Tubias Pascal of Selby (Dogsquire)
+  </footer>
+</body>
+
+</html>
