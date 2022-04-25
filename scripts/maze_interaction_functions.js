@@ -199,7 +199,7 @@ function attack(attacker,defender,monsterDiv){
 
 
 function damage(dice){ 
-  const regex = /([0-9+])d([0-9+])([\+,\-][0-9+])/;
+  const regex = /([0-9]*)d([0-9]*)([\+,\-][0-9]*)/;
   const damageSplit = dice.split(regex)
   var damageDice = damageSplit.map(function (x) { 
     return parseInt(x, 10); 
@@ -211,6 +211,7 @@ function damage(dice){
   if (damageTotal < 0){
     damageTotal = 0
   }
+  console.log(`Initial die: ${dice}, Split dice: ${damageDice}, Damage output: ${damageTotal}`)
   return damageTotal
 }
 
