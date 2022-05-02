@@ -3,17 +3,20 @@ body{
 }
 
 header{
-  border: 2px solid black;
-  height: 8vh; 
-  background-color: 
-  #480c0c; 
-  color:#f4e0be
+  border-top: 2px solid black;
+  height: 4em; 
+  background-color: #480c0c; 
+  color:#f4e0be;
+  padding-left: 1em;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 main{
   display: flex;
   justify-content: space-between; 
-  height: 88vh
+  height: calc(100vh - 4.5em)
 }
 
 .main-left{
@@ -21,7 +24,8 @@ main{
   flex-direction: column;
   justify-content: space-between; 
   height: 100%; 
-  width: 70vw
+  width: 70vw;
+  border: 2px solid black;
 }
 
 .main-right{
@@ -39,21 +43,48 @@ footer{
   color: #f4e0be
 }
 
+/*Header*/
+h1{
+  margin: 0;
+  padding: 0.5em;
+}
+#about{
+  margin: 0;
+  padding: 0.5em;
+  width: 10em;
+  display: flex;
+  justify-content: right;
+}
+
+#about-div{
+  position: absolute;
+  z-index: 2;
+  background-color: #480c0c;
+  color: white;
+  margin: 30vh 40vw;
+  width: 30vw;
+  height: 30vh;
+  border: 1px solid white;
+}
+
+
 #start-div{
   background-color: white;
   width: 50%;
   height: 50%;
-  margin: 25%;
+  margin: 10% 25%;
+}
+#loading-div{
+  display: none;
 }
 
-#loading {
-  display: none;
+#loading-icon {
   border: 16px solid #f3f3f3; /* Light grey */
   border-top: 16px solid #3498db; /* Blue */
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  margin: 15%;
+  margin: 5% 25%;
   animation: spin 2s linear infinite;
 }
 
@@ -66,6 +97,24 @@ footer{
 #stat-nav{
   display: flex; 
   justify-content: space-around;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+.stat-button{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  background-color: red;
+  padding: 0.5em;
+  flex-grow: 1;
+}
+.stat-button.active{
+  background-color: darkred;
+}
+
+#stat-div{
+  overflow: scroll;
 }
 .stat-section > * {
   display: none;
@@ -82,7 +131,8 @@ footer{
 }
 #character-portrait-image{
   height: 100px; 
-  object-fit: contain
+  object-fit: contain;
+  border: 0.5em ridge #D4AF37;
 }
 #character-info{
   width: 100%
@@ -93,15 +143,61 @@ footer{
  object-fit: cover
 }
 
+#monster-info{
+  width: 100%
+}
+#monster-info img{
+ height: 30px; 
+ width: 30px; 
+ object-fit: cover
+}
+
+
+.image-container {
+  position: relative;
+  text-align: center;
+  color: black;
+}
+
+.image-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#character-attributes-details  dl {
+    border: 3px double #ccc;
+    padding: 0.5em;
+  }
+#character-attributes-details dt{
+    float: left;
+    clear: left;
+    text-align: left;
+    font-weight: bold;
+}
+#character-attributes-details dt::after {
+    content: ":";
+  }
+#character-attributes-details  dd {
+    margin: 0 0 0 80px;
+    padding: 0 0 0 0;
+    text-transform: capitalize;
+  }
+#character-stats{
+  border-collapse: collapse;
+  text-transform: capitalize;
+  text-align: center;
+}
 .equipped{
   background-color: red;
 }
 /*Maze Block*/
 
 #maze-minimap{
-  margin: 5%;
-  width: 12em;
-  height: 12em;
+  margin: 5px;
+  width: calc(15vh - 10px);
+  height: calc(15vh - 10px);
   border: 1px solid black;
   flex-direction: column;
 }
@@ -135,9 +231,8 @@ footer{
 
 /***Map Section***/
 #map{
-  border: 2px solid black;
+  border-bottom: 2px solid black;
   height: 100%; 
-  max-height: 100%;
   overflow: hidden; 
   white-space: nowrap; 
   background-color: #0f0804;
@@ -147,8 +242,8 @@ footer{
   box-shadow: 1px 1px 5px grey;
   margin: 2px;
   display: inline-block;
-  width: 75vh;
-  height: 75vh;
+  width: 70vw;
+  height: 80vh;
   transition: transform 1s;
 }
 .map-card-inner {
@@ -189,13 +284,18 @@ footer{
 }
 
 /***Actions***/
-#action-div{
-  border: 2px solid black; 
+#main-left-lower{
   height: 15vh; 
-  max-height: 100%; 
-  overflow: scroll; 
   background-color: #f4e0b3; 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#action-div{
+  overflow: scroll; 
   color: #0f0804;
+  flex-grow: ;
 }
 
 /***Objects***/
@@ -232,6 +332,55 @@ footer{
 #exit-image{
   height: 100px;
 }
+
+.monster-attack{
+  animation-duration: 1s;
+  animation-name: monsterAttack;
+}
+
+@keyframes monsterAttack{
+  10% {
+    grid-column: 8/11;
+  }
+  80% {
+    grid-column: 5/8;
+  }
+  to {
+    grid-column: 7/10;
+  }
+}
+
+.hero-attack{
+  animation-duration: 1s;
+  animation-name: heroAttack;
+}
+
+@keyframes heroAttack{
+  10% {
+    grid-column: 1/4;
+  }
+  80% {
+    grid-column: 4/7;
+  }
+  to { 
+    grid-column: 2/5;
+  }
+}
+
+.take-damage{
+  animation-duration: 1s;
+  animation-name: takeDamage;
+}
+
+@keyframes takeDamage{
+  50% {
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
 
 /*Doors*/
 .door-top{
