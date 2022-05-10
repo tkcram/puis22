@@ -44,7 +44,7 @@ function buildMaze(){
 	  if(specialRoom === 'entrance'){
 	  	hero = `
 	  	  <div class = "hero" id="hero"> 
-		      <img src="https://www.pinclipart.com/picdir/big/541-5413340_transparent-character-traits-clipart-joy-inside-out-png.png"/>
+		      <img src="images/Hero.png"/>
 		    </div>
 			`
 		}
@@ -52,7 +52,7 @@ function buildMaze(){
 		if (danger){
 			monster = `
 	  	  <div class = "monster"> 
-		      <img src="https://i.pinimg.com/originals/c9/20/b4/c920b4408d20a6150b902ac435ebd2cc.png"/>
+		      <img src="images/Monster.png"/>
 		    </div>
 			`
 		}

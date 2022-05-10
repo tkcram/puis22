@@ -153,8 +153,9 @@ function attack(attacker,defender,monsterDiv){
     damageTypes = Object.keys(attacker['inventory']['weapon'][heroWeapon]['damage'])
     attackerName = "You"
     defenderName = `the ${defender['details']['name']}`
-    setTimeout(() => {  hero.classList.add("hero-attack");; }, 1000);
-    hero.classList.remove("hero-attack");
+    hero.classList.add("hero-attack")
+    setTimeout(() => {hero.classList.remove("hero-attack");}, 1000);
+    
   } else if (attackerType == 'monster'){
     attackRoll = rollDice(20,true)
     attackOptions = Object.keys(attacker['actions'])
@@ -163,7 +164,7 @@ function attack(attacker,defender,monsterDiv){
     attackerName = `The ${attacker['details']['name']}`
     defenderName = "you"
     
-    setTimeout(() => {  monsterDiv.classList.add("monster-attack");; }, 1000);
+    setTimeout(() => {  monsterDiv.classList.add("monster-attack"); }, 1000);
     monsterDiv.classList.remove("monster-attack")
     // console.log(attackRoll, heroData['combat']['ac'])
   }
