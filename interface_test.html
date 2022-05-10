@@ -17,8 +17,14 @@
   <header>
     <h1> Prattgeons & Pythons</h1>
     <div id="about">
-        <button onclick="showAbout()"><h3>About</h3></button>
-        <div id="about-div" style="display: none"><button onclick="showAbout()">x</button> There should be an about div here...</div>
+      <button onclick="showAbout()">About</button>
+      <div id="about-div" style="display: none">
+        <button onclick="showAbout()">x</button> 
+        <p>Welcome to Prattgeons & Pythons, a combined final project for INFO 637 & INFO 664, in pursuit of an MS-DAV at the Pratt Institute</p>
+        <p>You can view the final report <a href="">here</a>, as well as the repos for the front-end <a href="">here</a>, and for the backend <a href="">here</a> </p>
+        <p>A special thanks to <a href="">Professor Matt Miller</a> for being a wonderful teacher all semester, and to <a href="">Jennifer Cahalane</a> for helping find all those pesky semicolons</p>
+        <p> If you have any questions or comments, or want to report a bug, you can reach me <a href="">here</a> 
+      </div>
     </div>
   </header>
   <main>
@@ -27,24 +33,23 @@
       <div id="map">
         <div id="start-div">
           <div id="start-fields">
-            <label for="fname">Map Size</label>
-            <input type="text" id="map-size" value="2"><br><br>
-            <label for="fname">Level</label>
-            <input type="text" id="map-level" value="1"><br><br>
-            <label for="fname">Difficulty</label>
-            <input type="text" id="map-difficulty" value="0"><br><br>
+            <label for="map-size">Map Size</label>
+            <input type="number" id="map-size" min="2" value="2" max="40"><br><br>
+            <label for="map-level">Character Level</label>
+            <input type="number" id="map-level" min="1" value="1" max="20"><br><br>
+            <label for="map-difficulty">Difficulty</label>
+            <input type="number" id="map-difficulty" min="0" value="0" max="30"><br><br>
             <button type="button" id="start-button">Click here to start.</button>
           </div>
           <div id="loading-div">
             <div id="loading-icon"></div>
-            <p id="loading-status">Creating Maze</p>
           </div>
         </div>
       </div>
       <div id='main-left-lower'>
         <div id = "action-div"> 
-          <ol id="action-log">
-          </ol>
+          <ul id="action-log">
+          </ul>
         </div>
         <div id='maze-minimap'></div>
       </div>
@@ -59,10 +64,31 @@
         <div id="stat-character" class="stat-section active"> 
           <div id="character-attributes">
             <div id="character-portrait">
-              <img id="character-portrait-image" src="https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png">
+              <img id="character-portrait-image" class='portrait' src="https://sbcf.fr/wp-content/uploads/2018/03/sbcf-default-avatar.png">
+              <div id="character-info" class="info">
+                <div class="image-container">
+                  <img src="images/armor-crest-crossed-sheath-shield-sword-weapon-icon-385385.png">
+                  <p class="image-text" id="hero-attack"></p>
+                </div> 
+
+                <div class="image-container">
+                  <img src="https://www.freeiconspng.com/uploads/shield-png-1.png"> 
+                  <p class="image-text" id="hero-ac"></p>
+                </div>
+
+                <div class="image-container">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Love_or_Heart_transparent.png/1315px-Love_or_Heart_transparent.png?20190330090354"> 
+                  <p class="image-text" id="hero-hp"></p>
+                </div>
+
+                <div class="image-container">
+                  <img src="https://www.clipartmax.com/png/full/433-4333363_plus-web-design-think-outside-the-box-transparent-speed-icon.png"> 
+                  <p class="image-text" id="hero-initiative"></p>
+                </div>
+              </div>
             </div>
 
-            <dl id="character-attributes-details" >
+            <dl id="character-attributes-details" class="details" >
               <dt>Race</dt>
               <dd></dd>
               <dt>Subrace</dt>
@@ -74,27 +100,6 @@
               <dt>Level</dt>
               <dd></dd>
             </dl>
-          </div>
-          <div id="character-info">
-            <div class="image-container">
-              <img src="https://thumbs.dreamstime.com/b/sword-icon-vector-sign-symbol-isolated-white-background-sword-logo-concept-sword-icon-vector-isolated-white-background-134155093.jpg">
-              <div class="image-text" id="hero-attack"></div>
-            </div> 
-
-            <div class="image-container">
-              <img src="https://www.creativefabrica.com/wp-content/uploads/2020/08/12/Shield-Icon-Graphics-4941849-1-1-580x387.jpg"> 
-              <div class="image-text" id="hero-ac"></div>
-            </div>
-
-            <div class="image-container">
-              <img src="https://www.kindpng.com/picc/m/169-1694281_heart-symbol-computer-icons-heart-icon-instagram-png.png"> 
-              <div class="image-text" id="hero-hp"></div>
-            </div>
-
-            <div class="image-container">
-              <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1810/sudowoodo181000022/110278312-.jpg"> 
-              <div class="image-text" id="hero-initiative"></div>
-            </div>
           </div>
           <table id="character-stats">
             <tr>
@@ -130,12 +135,32 @@
           </div>
         </div>
         <div id="stat-maze" class="stat-section"> 
-          <!-- <h3> Monster </h3> -->
           <div id="monster-attributes">
             <div id="monster-portrait">
-              <img id="character-portrait-image"src="https://res.cloudinary.com/culturemap-com/image/upload/ar_4:3,c_fill,g_faces:center,w_320/v1493157058/photos/142231_original.jpg">
+              <img id="monster-portrait-image" class='portrait' src="https://res.cloudinary.com/culturemap-com/image/upload/ar_4:3,c_fill,g_faces:center,w_320/v1493157058/photos/142231_original.jpg">
+              <div id="monster-info" class="info">
+                <div class="image-container">
+                  <img src="images/armor-crest-crossed-sheath-shield-sword-weapon-icon-385385.png">
+                  <p class="image-text" id="monster-attack"></p>
+                </div> 
+
+                <div class="image-container">
+                  <img src="https://www.freeiconspng.com/uploads/shield-png-1.png"> 
+                  <p class="image-text" id="monster-ac"></p>
+                </div>
+
+                <div class="image-container">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Love_or_Heart_transparent.png/1315px-Love_or_Heart_transparent.png?20190330090354"> 
+                  <p class="image-text" id="monster-hp"></p>
+                </div>
+
+                <div class="image-container">
+                  <img src="https://www.clipartmax.com/png/full/433-4333363_plus-web-design-think-outside-the-box-transparent-speed-icon.png"> 
+                  <p class="image-text" id="monster-initiative"></p>
+                </div>
+              </div>
             </div>
-            <dl id="monster-attributes-details">
+            <dl id="monster-attributes-details" class="details">
               <dt>Name</dt>
               <dd></dd>
               <dt>Type</dt>
@@ -143,27 +168,6 @@
               <dt>Level</dt>
               <dd></dd>
             </dl>
-          </div>
-          <div id="monster-info">
-            <div class="image-container">
-              <img src="https://thumbs.dreamstime.com/b/sword-icon-vector-sign-symbol-isolated-white-background-sword-logo-concept-sword-icon-vector-isolated-white-background-134155093.jpg">
-              <div class="image-text" id="monster-attack"></div>
-            </div> 
-
-            <div class="image-container">
-              <img src="https://www.creativefabrica.com/wp-content/uploads/2020/08/12/Shield-Icon-Graphics-4941849-1-1-580x387.jpg"> 
-              <div class="image-text" id="monster-ac"></div>
-            </div>
-
-            <div class="image-container">
-              <img src="https://www.kindpng.com/picc/m/169-1694281_heart-symbol-computer-icons-heart-icon-instagram-png.png"> 
-              <div class="image-text" id="monster-hp"></div>
-            </div>
-
-            <div class="image-container">
-              <img src="https://previews.123rf.com/images/sudowoodo/sudowoodo1810/sudowoodo181000022/110278312-.jpg"> 
-              <div class="image-text" id="monster-initiative"></div>
-            </div>
           </div>
           <div>
             <dl id="monster-stats">
@@ -177,7 +181,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
 
   </main>

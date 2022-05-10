@@ -153,8 +153,8 @@ function attack(attacker,defender,monsterDiv){
     damageTypes = Object.keys(attacker['inventory']['weapon'][heroWeapon]['damage'])
     attackerName = "You"
     defenderName = `the ${defender['details']['name']}`
-    hero.classList.add("hero-attack");
-    setTimeout(() => {  hero.classList.remove("hero-attack"); }, 1000);
+    setTimeout(() => {  hero.classList.add("hero-attack");; }, 1000);
+    hero.classList.remove("hero-attack");
   } else if (attackerType == 'monster'){
     attackRoll = rollDice(20,true)
     attackOptions = Object.keys(attacker['actions'])
@@ -162,8 +162,9 @@ function attack(attacker,defender,monsterDiv){
     damageTypes = Object.keys(attacker['actions'][attackChoice]['damage'])
     attackerName = `The ${attacker['details']['name']}`
     defenderName = "you"
-    monsterDiv.classList.add("monster-attack");
-    setTimeout(() => {  monsterDiv.classList.remove("monster-attack"); }, 1000);
+    
+    setTimeout(() => {  monsterDiv.classList.add("monster-attack");; }, 1000);
+    monsterDiv.classList.remove("monster-attack")
     // console.log(attackRoll, heroData['combat']['ac'])
   }
 
@@ -171,12 +172,14 @@ function attack(attacker,defender,monsterDiv){
     for (let i=0; i < damageTypes.length; i++) {
       if (attackerType == 'hero'){
         damageAmount = attacker['inventory']['weapon'][heroWeapon]['damage'][damageTypes[i]]
-        monsterDiv.classList.add('take-damage')
-        setTimeout(() => {  monsterDiv.classList.remove("take-damage"); }, 1000);
+        
+        setTimeout(() => {  monsterDiv.classList.add('take-damage'); }, 1000);
+        monsterDiv.classList.remove("take-damage")
       } else if (attackerType == 'monster') {
         damageAmount = attacker['actions'][attackChoice]['damage'][damageTypes[i]]
-        hero.classList.add('take-damage')
-        setTimeout(() => {  hero.classList.remove("take-damage"); }, 1000);
+        
+        setTimeout(() => { hero.classList.add('take-damage') ; }, 1000);
+        hero.classList.remove("take-damage")
       }
       const damageDealt = damage(damageAmount) + damage(damageAmount)
       const damageType = damageTypes[i]
@@ -308,6 +311,4 @@ function updateItem(item, itemType){
 function clickExit(){
   alert('You win!!!')
 }
-// Search the room
 
-// Pickup Loot

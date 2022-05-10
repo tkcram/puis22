@@ -118,7 +118,7 @@ function buildMaze(){
 	})	
 }
 
-	async function buildInteractions() {
+async function buildInteractions() {
   const rooms = document.getElementsByClassName("map-item")
   const exitRoom = document.getElementById('exit')
   const doors = document.getElementsByClassName('door');

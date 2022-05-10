@@ -73,7 +73,6 @@ function pushCharacterStats(){
 function pushCharacterInventory(){
   const weaponList = heroData['inventory']['weapon']
   for (const weapon in weaponList){
-    // console.log(weapon)
     pushItem(weapon,'weapon')
   }
 
@@ -95,8 +94,7 @@ function pushItem(item,itemType){
 
   itemNode.setAttribute('src', itemImage)
   itemNode.setAttribute('title', item + " - " + itemAltText)
-  itemNode.setAttribute('style',"height: 50px; border: 2px solid black")
-  itemNode.setAttribute('class','item')
+  itemNode.setAttribute('class','inventory-item')
   if (heroData['combat']['weilding'][itemType] == item){
     itemNode.classList.add('equipped')
   } 
@@ -108,17 +106,20 @@ function pushItem(item,itemType){
 function equip(item,itemType,itemNode,itemDiv){
   // console.log(heroData['combat']['weilding'][itemType])
   if (heroData['combat']['weilding'][itemType] != item){
-    let inventory = itemDiv.getElementsByClassName('item')
+    let inventory = itemDiv.getElementsByClassName('inventory-item')
     for (let i = 0; i < inventory.length; i++) {
       inventory[i].classList.remove("equipped");
-      // heroData['inventory'][itemType][item]['equipped'] = 'false'
     }
     itemNode.classList.add("equipped")
     heroData['inventory'][itemType][item]['equipped'] = 'true'
     heroData['combat']['weilding'][itemType] = item
     pushActionLog(`Equipped ${item}`)
     if (itemType == 'weapon'){
-      document.getElementById('hero-attack').innerHTML = heroData['inventory']['weapon'][item]['bonus']
+      if (heroData['inventory']['weapon'][item]['bonus']){
+        document.getElementById('hero-attack').innerHTML = heroData['inventory']['weapon'][item]['bonus']
+      } else {
+        document.getElementById('hero-attack').innerHTML = heroData['details']['proficiency']
+      }
     } else if (itemType == 'armor') {
       heroData['combat']['ac'] = heroData['inventory']['armor'][item]['ac']
       document.getElementById('hero-ac').innerHTML = heroData['combat']['ac']
@@ -225,13 +226,3 @@ function pushMapReveal(room){
   const revealedCell = document.querySelector(`.minimap-item[data-row="${row}"][data-column="${column}"]`);
   revealedCell.classList.add("revealed");
 }
-
-// Inventory
-  //addListener() to all inventory slots
-  //listener equips item
-  //addItem
-
-// Stat tracker
-  //rooms explored, kills etc
-
-// Minimap

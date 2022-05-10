@@ -51,16 +51,6 @@ function mazeStart() {
 	pushMapReveal(startRoom)
 }
 
-// function levelUp(size) {
-//  Display "Go to next level?"
-//  Log coordinates of exit
-//  for each elementt in 'map'
-//    element.remove()
-//  character.levelup()
-//  size = size++
-//  level = level++
-//  generateMap(size, exitRow, exitCol, level)
-// }
 
 // Other page functions
 let aboutDiv = document.getElementById('about-div')
