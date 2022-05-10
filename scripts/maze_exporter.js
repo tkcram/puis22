@@ -21,7 +21,9 @@ function pushCharacterLog(){
 
 function pushCahacterImage(){
   const imageNumber = Math.ceil(Math.random() * 50);
-  document.getElementById('character-portrait-image').setAttribute('src',`images/${imageNumber}.png`)
+  let portait = document.getElementById('character-portrait-image')
+  portait.setAttribute('src',`images/${imageNumber}.png`)
+  portait.setAttribute('alt',`images by fantasy-faces.com`)
 }
 
 function pushCharacterDetails(){
