@@ -1,5 +1,6 @@
 //Maze functions
-let mazeData = []
+let mazeData = tempMaze
+let heroData = tempChar
 
 const startButton = document.getElementById('start-button');
 startButton.addEventListener("click",() => newGame())
@@ -13,7 +14,7 @@ async function newGame(){
   document.getElementById('start-fields').remove();
 	loadingStatus()
 
-	await getHeroData(level);
+	// await getHeroData(level);
 	await generateMap(size,0,0,difficulty);
 
 	pushCharacterLog();
@@ -26,17 +27,18 @@ function loadingStatus(){
 }
 
 //Generate the player character
-let heroData = {}
-async function getHeroData(level) {
-  const heroRes = await fetch('https://pfchs22.herokuapp.com/createCharacter/'+level);
-  heroData = await heroRes.json();
-}
+// let heroData = {}
+// async function getHeroData(level) {
+//   const heroRes = await fetch('https://pfchs22.herokuapp.com/createCharacter/'+level);
+//   heroData = await heroRes.json();
+// }
 
 //Generate the map
 async function generateMap(size,row,col,level){
   const params = `/${size}/${row}/${col}/${level}`
-  const mazeRes = await fetch('https://pfchs22.herokuapp.com/createMaze' + params)
-  mazeData = await mazeRes.json();
+  // const mazeRes = await fetch('/tempMaze.json')
+  // const mazeRes = await fetch('https://pfchs22.herokuapp.com/createMaze' + params)
+  // mazeData = await mazeRes.json();
   buildMaze()
   buildInteractions()
 }
@@ -47,6 +49,7 @@ function mazeStart() {
 	heroData['combat']['initiative'] += rollDice(heroData['combat']['initiative'])
 	const startRoom = document.getElementById('entrance')
 	// startRoom.scrollIntoView(false);
+  console.log("starting game")
 	fliproom(startRoom)
 	pushMapReveal(startRoom)
 }

@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="stylesheets/interface_stylesheet.css" />
+  <script src="scripts/tempChar.js"></script>
+  <script src="scripts/tempMaze.js"></script>
   <script src="scripts/control_script.js" defer></script>
   <script src="scripts/maze_exporter.js" defer></script>
   <script src="scripts/maze_builder.js" defer></script>
@@ -34,11 +36,13 @@
         <div id="start-div">
           <div id="start-fields">
             <label for="map-size">Map Size</label>
-            <input type="number" id="map-size" min="2" value="2" max="40"><br><br>
+            <input disabled type="number" id="map-size" min="2" value="2" max="40"><br><br>
             <label for="map-level">Character Level</label>
-            <input type="number" id="map-level" min="1" value="1" max="20"><br><br>
+            <input disabled type="number" id="map-level" min="1" value="1" max="20"><br><br>
             <label for="map-difficulty">Difficulty</label>
-            <input type="number" id="map-difficulty" min="0" value="0" max="30"><br><br>
+            <input disabled type="number" id="map-difficulty" min="0" value="0" max="30"><br><br>
+
+            <p style="white-space: normal; margin:0;">Live generation is currently down for maintenance, as the API has been updated since the code was created. Press the button below to continue with a pregenerated chararcter and maze.</p>
             <button type="button" id="start-button">Click here to start.</button>
           </div>
           <div id="loading-div">

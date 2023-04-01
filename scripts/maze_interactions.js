@@ -150,11 +150,14 @@ function attack(attacker,defender,monsterDiv){
   if (attackerType == 'hero'){ 
     heroWeapon = attacker['combat']['weilding']['weapon']
     attackRoll = rollDice(20,true)
+
     damageTypes = Object.keys(attacker['inventory']['weapon'][heroWeapon]['damage'])
     attackerName = "You"
     defenderName = `the ${defender['details']['name']}`
     hero.classList.add("hero-attack")
     setTimeout(() => {hero.classList.remove("hero-attack");}, 1000);
+    console.log("hero attack",attackRoll, defender['combat']['ac'][0]['value'])
+
     
   } else if (attackerType == 'monster'){
     attackRoll = rollDice(20,true)
@@ -166,9 +169,9 @@ function attack(attacker,defender,monsterDiv){
     
     setTimeout(() => {  monsterDiv.classList.add("monster-attack"); }, 1000);
     monsterDiv.classList.remove("monster-attack")
-    // console.log(attackRoll, heroData['combat']['ac'])
+    console.log("monster attack", attackRoll, heroData['combat']['ac'])
   }
-
+  console.log("testing",defender['combat']['ac'][0]['value'])
   if (attackRoll == 'critHit'){ //Critical Hit
     for (let i=0; i < damageTypes.length; i++) {
       if (attackerType == 'hero'){
@@ -192,7 +195,7 @@ function attack(attacker,defender,monsterDiv){
   } else if (attackRoll == 'critMiss'){ //Critial Miss
     actionText = `${attackerName} completely missed ${defenderType}`
 
-  } else if (attackRoll > defender['combat']['ac']){ //Hit
+  } else if (attackRoll > defender['combat']['ac'][0]['value']){ //Hit
     for (let i=0; i < damageTypes.length; i++) {
       if (attackerType == 'hero'){
         damageAmount = attacker['inventory']['weapon'][heroWeapon]['damage'][damageTypes[i]]

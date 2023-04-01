@@ -485,7 +485,7 @@ li{
 
 /*Walls*/
 .wall{
-  background-image: url("/images/treetop.png");
+/*  background-image: url("/images/treetop.png");*/
   background-size: 100px 100px;
 }
 .wall img{
